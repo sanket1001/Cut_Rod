@@ -27,6 +27,7 @@ if __name__ == "__main__":
 
     for i in range(1, 100):
 
+        rod_sizes.append(n)
         array.append(random.randint(1,100))
         # Test each version
         print("\nTesting CUT_ROD.py...")
@@ -53,30 +54,16 @@ if __name__ == "__main__":
 
         n = n+1
 
-# Plot the runtimes
-plt.figure(figsize=(10, 6))
+# Plot all runtimes on the same graph for comparison
+plt.figure(figsize=(12, 8))
+
 plt.plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o')
-plt.title("CUT_ROD Runtime vs Rod Size")
-plt.xlabel("Rod Size")
-plt.ylabel("Runtime (seconds)")
-plt.grid()
-plt.legend()
-plt.show()
-
-plt.figure(figsize=(10, 6))
 plt.plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
-plt.title("BOTTOM_UP_CUT_ROD Runtime vs Rod Size")
-plt.xlabel("Rod Size")
-plt.ylabel("Runtime (seconds)")
-plt.grid()
-plt.legend()
-plt.show()
-
-plt.figure(figsize=(10, 6))
 plt.plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
-plt.title("EXTENDED_BOTTOM_UP_CUT_ROD Runtime vs Rod Size")
+
+plt.title("Comparison of Runtimes vs Rod Size")
 plt.xlabel("Rod Size")
 plt.ylabel("Runtime (seconds)")
-plt.grid()
 plt.legend()
+plt.grid()
 plt.show()
