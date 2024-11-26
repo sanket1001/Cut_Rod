@@ -7,6 +7,7 @@ def cut_rod_recursive_with_cuts(length, benefit):
     :param benefit: A list where benefit[i] represents the benefit of cutting the rod at length i+1
     :return: A tuple containing the list of maximum benefits, the cuts to achieve it, and execution time
     """
+    best_cut=0
     def helper(n):
         if n == 0:
             return 0
@@ -23,12 +24,8 @@ def cut_rod_recursive_with_cuts(length, benefit):
     import time
     start_time = time.time()
 
-    # Compute the maximum benefit for the full rod length
-    helper(length)
-
-    i = length
     # Stop measuring time
     end_time = time.time()
     time_req = end_time - start_time
 
-    return memo, optimal_cuts, time_req
+    return helper(length), best_cut, time_req
