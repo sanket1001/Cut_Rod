@@ -9,6 +9,7 @@ def calcBenBU(length, benefit):
     :param benefit: A list where benefit[i] represents the benefit of cutting the rod at length i+1
     :return: A tuple containing the maximum benefit for each length
     """
+    start_time = time.time()
     # Array to store the maximum benefit for each rod length
     sol = [0] * (length + 1)
 
@@ -23,8 +24,9 @@ def calcBenBU(length, benefit):
         sol[i] = max_val
 
     # Stop measuring time
-    return sol
-
+    end_time = time.time()
+    algo_time = end_time - start_time
+    return sol, algo_time
 
 # Ensuring the main function runs when the script is executed
 if __name__ == "__main__":
