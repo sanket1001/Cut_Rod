@@ -1,3 +1,4 @@
+import time
 def cut_rod_recursive_with_cuts(length, benefit):
     """
     Recursive function to calculate the maximum benefit from cutting a rod
@@ -5,27 +6,42 @@ def cut_rod_recursive_with_cuts(length, benefit):
 
     :param length: The total length of the rod
     :param benefit: A list where benefit[i] represents the benefit of cutting the rod at length i+1
-    :return: A tuple containing the list of maximum benefits, the cuts to achieve it, and execution time
+    :return: An integer containing maximum benefit
     """
-    best_cut=0
     def helper(n):
         if n == 0:
             return 0
         max_val = float('-inf')
-        best_cut = 0
         for i in range(1, n + 1):
-            current_val = helper(n - i) + helper(i-1)
+            current_val = benefit[i - 1] + helper(n-i)
             if max_val < current_val:
-                max_val = current_val
-                best_cut = i
+                max_val = current_val        
         return max_val
+    return helper(length)
+if __name__ == "__main__":
+    try:
+        # Input the total length of the rod
+        n = int(input("Enter the length of the rod: "))
 
-    # Start measuring time
-    import time
-    start_time = time.time()
+        # Input the benefit values for each cut
+        array = input(f"Enter the benefit for each cut - {n} integers separated by space: ").split()
+        array = [int(x) for x in array if x.strip()]  # Handle multiple spaces and convert to integers
 
-    # Stop measuring time
-    end_time = time.time()
-    time_req = end_time - start_time
+        # Check if the input benefit array length matches the rod length
+        if len(array) != n:
+            print(f"Error: Expected {n} integers, but got {len(array)}.")
+        else:
+            # Call the function to calculate maximum benefit and cuts
+            start_time = time.time()
+            sol = cut_rod_recursive_with_cuts(n, array)
+            end_time = time.time()
+            algo_time = end_time - start_time
+            # Print the maximum benefit
+            print(f"The maximum benefit is {sol}")
 
-    return helper(length), best_cut, time_req
+            # Calculate and print the execution time
+            print(f"The algorithm took {algo_time:.6f} secs to execute.")
+
+    except ValueError:
+        # Handle invalid input errors
+        print("Error: Please enter valid integers only.")
