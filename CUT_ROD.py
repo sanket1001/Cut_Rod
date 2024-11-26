@@ -10,12 +10,10 @@ def cut_rod_recursive_with_cuts(length, benefit):
     def helper(n):
         if n == 0:
             return 0
-        if memo[n] != -1:
-            return memo[n]
         max_val = float('-inf')
         best_cut = 0
         for i in range(1, n + 1):
-            current_val = helper(n - i) + benefit[i - 1]
+            current_val = helper(n - i) + helper(i-1)
             if max_val < current_val:
                 max_val = current_val
                 best_cut = i
