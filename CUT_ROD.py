@@ -26,13 +26,7 @@ def cut_rod_recursive_with_cuts(length, benefit):
     # Compute the maximum benefit for the full rod length
     helper(length)
 
-    # Construct the list of cuts
-    optimal_cuts = []
     i = length
-    while i > 0:
-        optimal_cuts.append(cuts[i])
-        i -= cuts[i]
-
     # Stop measuring time
     end_time = time.time()
     time_req = end_time - start_time
