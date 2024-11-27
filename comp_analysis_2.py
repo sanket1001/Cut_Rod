@@ -20,7 +20,7 @@ if __name__ == "__main__":
     for i in range(1, 100):
 
         rod_sizes.append(n)
-        array.append(random.randint(1,100))
+        array.append(random.randint(1,2*i+1))
         # Test each version
         print("\nTesting CUT_ROD.py...")
         sol1, time1 = cut_rod(n, array)
