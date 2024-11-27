@@ -5,17 +5,6 @@ from BOTTOM_UP_CUT_ROD import calcBenBU as bottom_up_cut_rod
 import random
 import matplotlib.pyplot as plt
 
-def test_runtime(func, n, array):
-    """
-    Executes the given function and returns the solution, cuts, and execution time.
-    :param func: Function to test
-    :param n: Rod length
-    :param array: Benefit array
-    :return: Maximum benefit, cut positions, execution time
-    """
-    sol, cuts, algo_time = func(n, array)
-    return sol, cuts, algo_time
-
 if __name__ == "__main__":
 
     # Input the total length of the rod
@@ -54,7 +43,7 @@ if __name__ == "__main__":
         time1_list.append(time1)
         time2_list.append(time2)
         time3_list.append(time3)
-        
+
         if (time1 - time2) > 60.0:
             print("Breaking the loop...")
             break
