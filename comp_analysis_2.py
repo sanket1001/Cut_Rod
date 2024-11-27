@@ -1,4 +1,7 @@
 from EXTENDED_BOTTOM_UP_CUT_ROD import calculate_benefit as extended_bottom_up_cut_rod
+from CUT_ROD import cut_rod_recursive_with_cuts as cut_rod
+from BOTTOM_UP_CUT_ROD import calcBenBU as bottom_up_cut_rod
+
 import random
 import matplotlib.pyplot as plt
 
@@ -31,15 +34,15 @@ if __name__ == "__main__":
         array.append(random.randint(1,100))
         # Test each version
         print("\nTesting CUT_ROD.py...")
-        sol1, _, time1 = test_runtime(extended_bottom_up_cut_rod, n, array)
-        print(f"CUT_ROD - Maximum Benefit: {sol1[n]}, Execution Time: {time1:.6f} secs")
+        sol1, time1 = cut_rod(n, array)
+        print(f"CUT_ROD - Maximum Benefit: {sol1}, Execution Time: {time1:.6f} secs")
 
         print("\nTesting BOTTOM_UP_CUT_ROD.py...")
-        sol2, _, time2 = test_runtime(extended_bottom_up_cut_rod, n, array)
+        sol2, time2 = bottom_up_cut_rod(n, array)
         print(f"BOTTOM_UP_CUT_ROD - Maximum Benefit: {sol2[n]}, Execution Time: {time2:.6f} secs")
 
         print("\nTesting EXTENDED_BOTTOM_UP_CUT_ROD.py...")
-        sol3, _, time3 = test_runtime(extended_bottom_up_cut_rod, n, array)
+        sol3, _, time3 = extended_bottom_up_cut_rod(n, array)
         print(f"EXTENDED_BOTTOM_UP_CUT_ROD - Maximum Benefit: {sol3[n]}, Execution Time: {time3:.6f} secs")
 
         # Compare the results
@@ -51,6 +54,10 @@ if __name__ == "__main__":
         time1_list.append(time1)
         time2_list.append(time2)
         time3_list.append(time3)
+        
+        if (time1 - time2) > 60.0:
+            print("Breaking the loop...")
+            break
 
         n = n+1
 

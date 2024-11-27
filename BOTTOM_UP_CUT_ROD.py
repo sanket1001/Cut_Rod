@@ -43,10 +43,8 @@ if __name__ == "__main__":
             print(f"Error: Expected {n} integers, but got {len(array)}.")
         else:
             # Call the function to calculate maximum benefit and cuts
-            start_time = time.time()
-            sol = calcBenBU(n, array)
-            end_time = time.time()
-            algo_time = end_time - start_time
+            
+            sol, algo_time = calcBenBU(n, array)
 
             # Print the maximum benefit
             print(f"The maximum benefit is {sol[n]}")
