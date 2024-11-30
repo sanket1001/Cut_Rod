@@ -39,7 +39,7 @@ if __name__ == "__main__":
             # Call the function to calculate maximum benefit and cuts
             sol, algo_time = cut_rod_calc_benefit(n, array)
 
-            c
+            print("\n******* RETULTS **********")
             # Print the maximum benefit
             print(f"The maximum benefit is {sol}")
 
