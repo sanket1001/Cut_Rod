@@ -27,7 +27,7 @@ This project includes implementations of different rod-cutting algorithms and a 
 
 ### Dependencies
 
-The scripts require Python 3.x. Ensure that all files are in the same directory for seamless execution.
+The scripts require Python 3.x and Matplotlib. Ensure that all files are in the same directory for seamless execution.
 
 ### Steps
 
