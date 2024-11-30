@@ -1,5 +1,4 @@
 import time
-import sys
 def cut_rod_calc_benefit(length, benefit):
     """
     Recursive function to calculate the maximum benefit from cutting a rod
@@ -26,24 +25,12 @@ def cut_rod_calc_benefit(length, benefit):
 
 if __name__ == "__main__":
     try:
-        # Check if a filename is provided as a command-line argument
-        if len(sys.argv) != 2:
-            print("Error: Please provide the input filename as a command-line argument.")
-            sys.exit(1)
+        # Input the total length of the rod
+        n = int(input("Enter the length of the rod: "))
 
-        filename = sys.argv[1]
-
-        # Read the file content
-        with open(filename, 'r') as file:
-            lines = file.readlines()
-
-        # Parse the file content
-        n = int(lines[0].strip())  # First line: length of the rod
-        array = list(map(int, lines[1].strip().split()))  # Second line: space-separated prices
-
-        print("Contents of the file:")
-        print(f"Length of the rod {n}")
-        print(f"Benefit Array {array}")
+        # Input the benefit values for each cut
+        array = input(f"Enter the benefit for each cut - {n} integers separated by space: ").split()
+        array = [int(x) for x in array if x.strip()]  # Handle multiple spaces and convert to integers
 
         # Check if the input benefit array length matches the rod length
         if len(array) != n:
@@ -52,16 +39,13 @@ if __name__ == "__main__":
             # Call the function to calculate maximum benefit and cuts
             sol, algo_time = cut_rod_calc_benefit(n, array)
 
-            print("\n******* RESULTS **********")
+            print("\n******* RETULTS **********")
             # Print the maximum benefit
             print(f"The maximum benefit is {sol}")
 
             # Calculate and print the execution time
             print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
 
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found.")
-
-    except ValueError as e:
+    except ValueError:
         # Handle invalid input errors
-        print("Error: Invalid input in the file. {e}.")
+        print("Error: Please enter valid integers only.")
