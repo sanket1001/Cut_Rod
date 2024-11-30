@@ -45,11 +45,12 @@ if __name__ == "__main__":
             # Call the function to calculate maximum benefit and cuts
             sol, algo_time = bottom_up_cut_rod_calc_benefit(n, array)
 
+            print("\n******* RETULTS **********")
             # Print the maximum benefit
             print(f"The maximum benefit is {sol[n]}")
 
             # Calculate and print the execution time
-            print(f"The algorithm took {algo_time:.6f} secs to execute.")
+            print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
 
     except ValueError:
         # Handle invalid input errors

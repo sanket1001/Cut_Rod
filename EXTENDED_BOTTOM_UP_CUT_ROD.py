@@ -7,7 +7,7 @@ def extended_bottom_up_cut_rod_calc_benefit(length, benefit):
     
     :param length: The total length of the rod
     :param benefit: A list where benefit[i] represents the benefit of cutting the rod at length i+1
-    :return: A tuple containing the maximum benefit for each length and the cuts to achieve them
+    :return: A tuple containing the maximum benefit for each length, the cuts to achieve them and the time it took to run the algorithm
     """
 
     # Start measuring time
@@ -23,10 +23,10 @@ def extended_bottom_up_cut_rod_calc_benefit(length, benefit):
     # Iterating over rod lengths
     for i in range(1, length + 1):
         for j in range(1, i + 1):
-            # Check if cutting at length j provides a greater benefit
+            # Check if cutting the rod at length j provides a greater benefit
             if sol[i] < (sol[i - j] + benefit[j - 1]):
                 sol[i] = sol[i - j] + benefit[j - 1]
-                cuts[i] = j  # Store the cut that gives the maximum benefit
+                cuts[i] = j   # Store the cut that gives the maximum benefit
 
     # Stop measuring time
     end_time = time.time()
@@ -50,12 +50,11 @@ if __name__ == "__main__":
             print(f"Error: Expected {n} integers, but got {len(array)}.")
         else:
             
-            
             # Call the function to calculate maximum benefit and cuts
+            # This function returns 3 outputs, the solution array, optimum cuts and time required to run the array
             sol, cuts, algo_time = extended_bottom_up_cut_rod_calc_benefit(n, array)
             
-
-            
+            print("\n******* RETULTS **********")
             # Print the maximum benefit
             print(f"The maximum benefit is {sol[n]}")
             
@@ -68,7 +67,7 @@ if __name__ == "__main__":
             print("end", end="\n")
 
             # Calculate and print the execution time
-            print(f"The algorithm took {algo_time:.6f} secs to execute.")
+            print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
  
     except ValueError:
         # Handle invalid input errors
