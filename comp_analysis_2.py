@@ -18,7 +18,8 @@ if __name__ == "__main__":
     time3_list = []
 
     for i in range(1, 100):
-
+        
+        print(f"\nCurrent rod length : {n}")
         rod_sizes.append(n)
         array.append(random.randint(1,2*i+1))
         # Test each version
@@ -35,31 +36,68 @@ if __name__ == "__main__":
         print(f"EXTENDED_BOTTOM_UP_CUT_ROD - Maximum Benefit: {sol3[n]}, Execution Time: {time3:.6f} secs")
 
         # Compare the results
-        print("\nComparison:")
-        print(f"CUT_ROD Execution Time: {time1:.6f} secs")
-        print(f"BOTTOM_UP_CUT_ROD Execution Time: {time2:.6f} secs")
-        print(f"EXTENDED_BOTTOM_UP_CUT_ROD Execution Time: {time3:.6f} secs")
+        # print("\nComparison:")
+        # print(f"CUT_ROD Execution Time: {time1:.6f} secs")
+        # print(f"BOTTOM_UP_CUT_ROD Execution Time: {time2:.6f} secs")
+        # print(f"EXTENDED_BOTTOM_UP_CUT_ROD Execution Time: {time3:.6f} secs")
 
         time1_list.append(time1)
         time2_list.append(time2)
         time3_list.append(time3)
-
+        print(f"\nTime difference between CUT ROD and BOTTOM UP CUT ROD runtime : {(time1 - time2):.6f} secs")
         if (time1 - time2) > 60.0:
             print("Breaking the loop...")
             break
 
         n = n+1
+    
+    print("\n********* Comparison Results (in secs) **********\n")
+    print("| Rod Length | CUT ROD Runtime | BOTTOM UP CUT ROD Runtime | EXTENDED BOTTOM UP CUT ROD Runtime |")
+    print("|---------------------------------------------------------------------------------------------- |")
+    for i in range(0,n):
+        print(f"| {i+1:<10} | {time1_list[i]:<15.6f} | {time2_list[i]:<25.6f} | {time3_list[i]:<34.6f} |")
 
-# Plot all runtimes on the same graph for comparison
-plt.figure(figsize=(12, 8))
+    print("|---------------------------------------------------------------------------------------------- |")
 
-plt.plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o')
-plt.plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
-plt.plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
+    print(f"\nThe length of rod when runtime difference between CUT ROD and BOTTOM UP CUT ROD is greater than 60 secs is {n}")
 
-plt.title("Comparison of Runtimes vs Rod Size")
-plt.xlabel("Rod Size")
-plt.ylabel("Runtime (seconds)")
-plt.legend()
-plt.grid()
-plt.show()
+    # Create subplots for four different graphs
+    fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+
+    # Graph 1: CUT_ROD Runtime vs Rod Length
+    axs[0, 0].plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o', color='blue')
+    axs[0, 0].set_title("CUT_ROD Runtime vs Rod Length")
+    axs[0, 0].set_xlabel("Rod Length")
+    axs[0, 0].set_ylabel("Runtime (seconds)")
+    axs[0, 0].grid()
+    axs[0, 0].legend()
+
+    # Graph 2: BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[0, 1].plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
+    axs[0, 1].set_title("BOTTOM_UP_CUT_ROD Runtime vs Rod Length")
+    axs[0, 1].set_xlabel("Rod Length")
+    axs[0, 1].set_ylabel("Runtime (seconds)")
+    axs[0, 1].grid()
+    axs[0, 1].legend()
+
+    # Graph 3: EXTENDED_BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[1, 0].plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
+    axs[1, 0].set_title("EXTENDED_BOTTOM_UP_CUT_ROD Runtime vs Rod Length")
+    axs[1, 0].set_xlabel("Rod Length")
+    axs[1, 0].set_ylabel("Runtime (seconds)")
+    axs[1, 0].grid()
+    axs[1, 0].legend()
+
+    # Graph 4: CUT_ROD and BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[1, 1].plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o', color='blue')
+    axs[1, 1].plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
+    # axs[1, 1].plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
+    axs[1, 1].set_title("All Runtimes vs Rod Length")
+    axs[1, 1].set_xlabel("Rod Length")
+    axs[1, 1].set_ylabel("Runtime (seconds)")
+    axs[1, 1].grid()
+    axs[1, 1].legend()
+
+    # Adjust layout for better spacing
+    plt.tight_layout()
+    plt.show()
