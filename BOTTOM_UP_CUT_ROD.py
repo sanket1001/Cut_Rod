@@ -59,4 +59,15 @@ if __name__ == "__main__":
             sol, algo_time = bottom_up_cut_rod_calc_benefit(n, array)
 
             print("\n******* RESULTS **********")
-            # Print th
+            # Print the maximum benefit
+            print(f"The maximum benefit is {sol[n]}")
+
+            # Calculate and print the execution time
+            print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
+
+    except FileNotFoundError:
+        print(f"Error: File '{filename}' not found.")
+
+    except ValueError as e:
+        # Handle invalid input errors
+        print("Error: Invalid input in the file. {e}.")
