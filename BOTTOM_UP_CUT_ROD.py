@@ -1,6 +1,6 @@
 import time
 
-def calcBenBU(length, benefit):
+def bottom_up_cut_rod_calc_benefit(length, benefit):
     """
     Function to calculate the maximum benefit using Bottom-Up DP approach 
     and the optimal cuts to achieve this benefit.
@@ -43,8 +43,7 @@ if __name__ == "__main__":
             print(f"Error: Expected {n} integers, but got {len(array)}.")
         else:
             # Call the function to calculate maximum benefit and cuts
-            
-            sol, algo_time = calcBenBU(n, array)
+            sol, algo_time = bottom_up_cut_rod_calc_benefit(n, array)
 
             # Print the maximum benefit
             print(f"The maximum benefit is {sol[n]}")

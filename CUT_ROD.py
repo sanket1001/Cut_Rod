@@ -1,5 +1,5 @@
 import time
-def cut_rod_recursive_with_cuts(length, benefit):
+def cut_rod_calc_benefit(length, benefit):
     """
     Recursive function to calculate the maximum benefit from cutting a rod
     and the cuts that produce this benefit.
@@ -22,6 +22,7 @@ def cut_rod_recursive_with_cuts(length, benefit):
     end_time = time.time()
     algo_time = end_time - start_time
     return solu, algo_time
+
 if __name__ == "__main__":
     try:
         # Input the total length of the rod
@@ -36,7 +37,8 @@ if __name__ == "__main__":
             print(f"Error: Expected {n} integers, but got {len(array)}.")
         else:
             # Call the function to calculate maximum benefit and cuts
-            sol, algo_time = cut_rod_recursive_with_cuts(n, array)
+            sol, algo_time = cut_rod_calc_benefit(n, array)
+
             # Print the maximum benefit
             print(f"The maximum benefit is {sol}")
 

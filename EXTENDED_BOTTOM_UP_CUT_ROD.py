@@ -1,6 +1,6 @@
 import time
 
-def calculate_benefit(length, benefit):
+def extended_bottom_up_cut_rod_calc_benefit(length, benefit):
     """
     Function to calculate the maximum benefit from cutting a rod
     and the optimal cuts to achieve this benefit.
@@ -52,7 +52,7 @@ if __name__ == "__main__":
             
             
             # Call the function to calculate maximum benefit and cuts
-            sol, cuts, algo_time = calculate_benefit(n, array)
+            sol, cuts, algo_time = extended_bottom_up_cut_rod_calc_benefit(n, array)
             
 
             

@@ -1,6 +1,6 @@
-from EXTENDED_BOTTOM_UP_CUT_ROD import calculate_benefit as extended_bottom_up_cut_rod
-from CUT_ROD import cut_rod_recursive_with_cuts as cut_rod
-from BOTTOM_UP_CUT_ROD import calcBenBU as bottom_up_cut_rod
+from EXTENDED_BOTTOM_UP_CUT_ROD import extended_bottom_up_cut_rod_calc_benefit as extended_bottom_up_cut_rod
+from CUT_ROD import cut_rod_calc_benefit as cut_rod
+from BOTTOM_UP_CUT_ROD import bottom_up_cut_rod_calc_benefit as bottom_up_cut_rod
 
 import random
 import matplotlib.pyplot as plt
