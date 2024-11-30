@@ -66,4 +66,9 @@ if __name__ == "__main__":
                 i = i - cuts[i]
             print("end", end="\n")
 
-            # Calc
+            # Calculate and print the execution time
+            print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
+ 
+    except ValueError:
+        # Handle invalid input errors
+        print("Error: Please enter valid integers only.")

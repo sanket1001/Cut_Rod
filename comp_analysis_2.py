@@ -57,4 +57,47 @@ if __name__ == "__main__":
     for i in range(0,n):
         print(f"| {i+1:<10} | {time1_list[i]:<15.6f} | {time2_list[i]:<25.6f} | {time3_list[i]:<34.6f} |")
 
-    print("|--------------------------------------------------------------
+    print("|---------------------------------------------------------------------------------------------- |")
+
+    print(f"\nThe length of rod when runtime difference between CUT ROD and BOTTOM UP CUT ROD is greater than 60 secs is {n}")
+
+    # Create subplots for four different graphs
+    fig, axs = plt.subplots(2, 2, figsize=(12, 10))
+
+    # Graph 1: CUT_ROD Runtime vs Rod Length
+    axs[0, 0].plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o', color='blue')
+    axs[0, 0].set_title("CUT_ROD Runtime vs Rod Length")
+    axs[0, 0].set_xlabel("Rod Length")
+    axs[0, 0].set_ylabel("Runtime (seconds)")
+    axs[0, 0].grid()
+    axs[0, 0].legend()
+
+    # Graph 2: BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[0, 1].plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
+    axs[0, 1].set_title("BOTTOM_UP_CUT_ROD Runtime vs Rod Length")
+    axs[0, 1].set_xlabel("Rod Length")
+    axs[0, 1].set_ylabel("Runtime (seconds)")
+    axs[0, 1].grid()
+    axs[0, 1].legend()
+
+    # Graph 3: EXTENDED_BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[1, 0].plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
+    axs[1, 0].set_title("EXTENDED_BOTTOM_UP_CUT_ROD Runtime vs Rod Length")
+    axs[1, 0].set_xlabel("Rod Length")
+    axs[1, 0].set_ylabel("Runtime (seconds)")
+    axs[1, 0].grid()
+    axs[1, 0].legend()
+
+    # Graph 4: CUT_ROD and BOTTOM_UP_CUT_ROD Runtime vs Rod Length
+    axs[1, 1].plot(rod_sizes, time1_list, label="CUT_ROD Runtime", marker='o', color='blue')
+    axs[1, 1].plot(rod_sizes, time2_list, label="BOTTOM_UP_CUT_ROD Runtime", marker='o', color='orange')
+    # axs[1, 1].plot(rod_sizes, time3_list, label="EXTENDED_BOTTOM_UP_CUT_ROD Runtime", marker='o', color='green')
+    axs[1, 1].set_title("All Runtimes vs Rod Length")
+    axs[1, 1].set_xlabel("Rod Length")
+    axs[1, 1].set_ylabel("Runtime (seconds)")
+    axs[1, 1].grid()
+    axs[1, 1].legend()
+
+    # Adjust layout for better spacing
+    plt.tight_layout()
+    plt.show()

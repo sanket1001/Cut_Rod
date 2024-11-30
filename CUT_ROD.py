@@ -48,4 +48,4 @@ if __name__ == "__main__":
 
     except ValueError:
         # Handle invalid input errors
-        print("E
+        print("Error: Please enter valid integers only.")
