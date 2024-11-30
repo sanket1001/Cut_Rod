@@ -69,22 +69,4 @@ if __name__ == "__main__":
             
             print("\n******* RETULTS **********")
             # Print the maximum benefit
-            print(f"The maximum benefit is {sol[n]}")
-            
-            # Print the sequence of cuts leading to the maximum benefit
-            print("Rod cut positions: ", end="")
-            i = n
-            while i > 0:
-                print(f"{cuts[i]} ->", end=" ")
-                i = i - cuts[i]
-            print("end", end="\n")
-
-            # Calculate and print the execution time
-            print(f"The algorithm took {algo_time:.6f} secs to execute.\n")
- 
-    except FileNotFoundError:
-        print(f"Error: File '{filename}' not found.")
-
-    except ValueError as e:
-        # Handle invalid input errors
-        print("Error: Invalid input in the file. {e}.")
+            print(f"The maximum benefit is {sol[
